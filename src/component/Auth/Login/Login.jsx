@@ -3,36 +3,34 @@ import { Container, Row, Col } from 'react-grid-system';
 import style from '../Auth.module.css'
 import logo from '../../../Img/proceset.png'
 import {NavLink} from "react-router-dom";
+import {Field, reduxForm} from "redux-form";
+import handleSubmit from "redux-form/lib/handleSubmit";
+import {gql} from "apollo-boost";
 
-export function Login(){
+
+
+
+const Login = (props) => {
+    const {handleSubmit} = props;
     const [values, setValues] = useState({
         username: "",
         password: "",
     })
-    const onChange = (event) => {
-        setValues({...values, [event.target.name]: event.target.value})
-    }
-    const onSubmit = (event) => {
-        event.preventDefault();
-
-    }
     return (<Container fluid className={style.form_wrapper}>
             <Row align="start" >
                 <Col >
-                    <form >
-                        <input
+                    <form onSubmit={handleSubmit}>
+                        <Field
                             value={values.username}
-                            name="Username"
+                            name="username"
                             type="text"
                             placeholder="Имя пользователя"
-                            onChange={onChange}
                         />
-                        <input
+                        <Field
                             value={values.password}
-                            name="Password"
+                            name="password"
                             type="password"
                             placeholder="Введите пароль"
-                            onChange={onChange}
                         />
                         <button type="submit" className={style.btn_submit}> Применить и войти </button>
                         <NavLink to="/auth/registration">Зарегистрироваться</NavLink>
@@ -41,4 +39,6 @@ export function Login(){
             </Row>
         </Container>
     )
+
 }
+export default reduxForm({form:"authLogin"})(Login)

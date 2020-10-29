@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import {BrowserRouter, Route} from "react-router-dom";
-import {Login} from "./component/Auth/Login/Login";
 import {Registration} from "./component/Auth/Login/Registration";
 import {Auth} from "./component/Auth/Auth";
 

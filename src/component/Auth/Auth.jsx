@@ -4,7 +4,7 @@ import logo from "../../Img/proceset.png";
 import { Container, Row, Col } from "react-grid-system";
 import { Route } from "react-router-dom";
 import {Registration} from "./Login/Registration";
-import {Login} from "./Login/Login";
+import Login from "./Login/Login";
 
 export function Auth() {
     return (
